@@ -108,7 +108,6 @@ void doubly_even(int n)
     int a[n][n];
     int smallSquareSize = (n / 4);
 
-    // Initialize the array with zeros
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < n; j++)
@@ -117,7 +116,6 @@ void doubly_even(int n)
         }
     }
 
-    // Mark specific regions with -1
     for (int i = 0; i < smallSquareSize; i++)
     {
         for (int j = 0; j < smallSquareSize; j++)
@@ -166,7 +164,6 @@ void doubly_even(int n)
     int InitialIndx = 1;
     int step = 1;
 
-    // First pass: Fill cells with -1
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < n; j++)
@@ -190,7 +187,7 @@ void doubly_even(int n)
                     for (int c = 0; c < n; c++)
                     {
                         printf("%4d ", a[r][c]);
-                        if (a[r][c] >= 0) rowSum += a[r][c]; // Only add non-negative values
+                        if (a[r][c] >= 0) rowSum += a[r][c];
                     }
                     if (rowSum < 0)
                         printf("|  %4d\n\n", 0);
@@ -198,18 +195,16 @@ void doubly_even(int n)
                         printf("|  %4d\n\n", rowSum);
                 }
 
-                // Print bottom border
                 for (int k = 0; k < n * 5 + 2; k++) printf("-");
                 printf("\n");
 
-                // Print column-wise sums
                 printf("|");
                 for (int c = 0; c < n; c++)
                 {
                     int colSum = 0;
                     for (int r = 0; r < n; r++)
                     {
-                        if (a[r][c] >= 0) colSum += a[r][c]; // Only add non-negative values
+                        if (a[r][c] >= 0) colSum += a[r][c];
                     }
                     if (colSum < 0)
                         printf("%4d ", 0);
@@ -218,7 +213,6 @@ void doubly_even(int n)
                 }
                 printf("|\n");
 
-                // Diagonal sums
                 int mainDiagSum = 0, secDiagSum = 0;
                 for (int d = 0; d < n; d++)
                 {
@@ -245,7 +239,6 @@ void doubly_even(int n)
 
     int v_index = 0;
 
-    // Second pass: Fill remaining cells
     for (int i = n - 1; i >= 0; i--)
     {
         for (int j = n - 1; j >= 0; j--)
@@ -402,7 +395,6 @@ void single_even(int n)
         }
         printf("\n");
     }
-    // Second part (upper-right quadrant)
     j = (n / 2) + 1, k = ((n / 2) + 1) / 2 + (n / 2);
     for (int i = 1; i <= (n / 2) * (n / 2); i++)
     {
@@ -433,12 +425,10 @@ void single_even(int n)
             j += 2, k -= 1;
         }
 
-        // Print the matrix and row/column sums
         printf("\n+");
         for (int i = 0; i < n * 5; i++) printf("-");
         printf("+\n");
 
-        // Printing the matrix with row sums
         for (int r = 1; r <= n; r++)
         {
             int rowSum = 0;
@@ -455,7 +445,6 @@ void single_even(int n)
         for (int i = 0; i < n * 5; i++) printf("-");
         printf("+\n");
 
-        // Printing column sums under each column
         printf("|");
         for (int c = 1; c <= n; c++)
         {
@@ -468,7 +457,6 @@ void single_even(int n)
         }
         printf("|\n");
 
-        // Diagonal sums (main diagonal and secondary diagonal)
         int mainDiagSum = 0, secDiagSum = 0;
         for (int d = 1; d <= n; d++)
         {
@@ -616,7 +604,6 @@ void single_even(int n)
         for (int i = 0; i < n * 5; i++) printf("-");
         printf("+\n");
 
-        // Printing column sums under each column
         printf("|");
         for (int c = 1; c <= n; c++)
         {
@@ -648,21 +635,6 @@ void single_even(int n)
         }
         printf("\n");
     }
-
-//    printf("+");
-//    for (int i = 0; i < n * 5; i++) printf("-");
-//    printf("+\n");
-//
-//    for (int j = 1; j <= n; j++)
-//    {
-//        int col_sum = 0;
-//        for (int i = 1; i <= n; i++)
-//        {
-//            col_sum += a[i][j];
-//        }
-//        printf("    %d", col_sum);
-//    }
-//    printf("\n\n");
     for(int i=1; i<=(n/2-1)/2; i++)
     {
         for(int j=1; j<=(n/2-1)/2; j++)
@@ -862,8 +834,8 @@ int main()
         printf("\nLet's create a Magic Square!\n");
         printf("========================================\n");
         printf("Select the type of Magic Square:\n");
-        printf("  1. Odd Magic Square\n");
-        printf("  2. Even Magic Square\n");
+        printf("  1. Odd Magic Square--->(Applicable for odd number of size)\n");
+        printf("  2. Even Magic Square--->(Applicable for even number of size)\n");
         printf("========================================\n");
         printf("Enter your choice (1 or 2): ");
         int n;
@@ -881,8 +853,8 @@ int main()
             printf("\nYou chose the Even Magic Square.\n");
             printf("========================================\n");
             printf("Even Magic Squares are of two types:\n");
-            printf("  1. Singly Even (e.g., 6x6, 10x10)\n");
-            printf("  2. Doubly Even (e.g., 4x4, 8x8)\n");
+            printf("  1. Singly Even (e.g., 6x6, 10x10)  this square size is divisible by 2 but not divisible by 4\n");
+            printf("  2. Doubly Even (e.g., 4x4, 8x8)   this square size is only divisible by 4\n");
             printf("========================================\n");
             printf("Enter your choice (1 or 2): ");
             int evenType;
